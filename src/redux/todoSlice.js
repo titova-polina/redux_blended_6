@@ -10,7 +10,7 @@ export const slice = createSlice({
       state.todos.push(action.payload);
     },
     deleteTodo(state, action) {
-      state.todos.filter(todo => todo.id !== action.payload);
+      state.todos = state.todos.filter(todo => todo.id !== action.payload);
     },
   },
 });
