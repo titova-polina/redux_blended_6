@@ -1,10 +1,15 @@
 import { Grid, GridItem, Text, Todo } from 'components';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllTodos } from 'redux/operations';
 import { todos } from 'redux/todoSlice';
 
 export default function ToDoList() {
   const valueTodos = useSelector(todos);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllTodos());
+  }, [dispatch]);
   return (
     <>
       {valueTodos.length === 0 && (
