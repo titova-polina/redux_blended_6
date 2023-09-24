@@ -1,3 +1,5 @@
+import { getAllTodos } from './operations';
+
 const { createSlice } = require('@reduxjs/toolkit');
 
 export const slice = createSlice({
@@ -13,6 +15,10 @@ export const slice = createSlice({
       state.todos = state.todos.filter(todo => todo.id !== action.payload);
     },
   },
+  extraReducers: bulder =>
+    bulder.addCase(getAllTodos.fulfilled, (state, action) => {
+      state.todos = action.payload;
+    }),
 });
 
 export const todosReducer = slice.reducer;
